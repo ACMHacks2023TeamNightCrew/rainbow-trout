@@ -1,0 +1,34 @@
+{% extends "base.html" %} {% block content %}
+<>
+  <label for="majorSelector" id="majorSelectorLabel"
+    >What is your major?<br
+  /></label>
+  <select name="majorSelector" id="majorSelector">
+    <!-- Just mockup -->
+    <option value="Computer Science B.S.">Computer Science B.S.</option>
+    <option value="Computer Engineering B.S.">Computer Engineering B.S.</option>
+    <option value="Computer Science Game Design B.A.">
+      Computer Science Game Design B.A.
+    </option>
+  </select>
+  <br />
+  <ul>
+      <!-- Insert Course List from Major and check off completed -->
+      <!-- All of this is filler, fill in with scraped data -->
+      <li>
+          <label for="CSE20CheckBox" id="CSE20CheckBoxLabel">CSE20</label>
+          <input type="checkbox" name="CSE20CheckBox">
+      </li>
+      <li>
+          <label for="CSE30CheckBox" id="CSE30CheckBoxLabel">CSE30</label>
+          <input type="checkbox" name="CSE30CheckBox">
+      </li>
+      <li>
+          <label for="MATH23ACheckBox" id="MATH23ACheckBoxLabel">MATH23A</label>
+          <input type="checkbox" name="MATH23ACheckBox">
+      </li>
+  </ul>
+  <br />
+  <input type="submit">
+</form>
+{% endblock %}
