@@ -1,7 +1,8 @@
 import json
 import prereqs
+import asyncio
 
-def _possible(course: str, taken: list):
+async def _possible(course: str, taken: list):
     # if course is in list of taken then return false
     # if not all prereqs in list of taken then return false
     # if all course's prereqs are in list of taken then return true
@@ -15,7 +16,7 @@ def _possible(course: str, taken: list):
     return True
 
 # Returns a list of courses that is available to the user
-def courses(major: str, taken: list):
+async def courses(major: str, taken: list):
     file = open("static/majorLists/" + major + ".json", "r")
     jsonstring = file.read()
     courseList = json.loads(jsonstring)
