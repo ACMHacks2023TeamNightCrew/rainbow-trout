@@ -19,9 +19,18 @@ async def results():
     print(request.form)
     taken = []
     cantake = await filter.courses(major, taken)
-    print(cantake)
+    # cantake = ["CSE 30", "CSE 12", "MATH 19A", "LIT 81I", "CSE 3", "CRWN 1", "HIST 4"]
     from random import choice
-    schedules = [[choice(cantake) for _ in range(3)] for _ in range (3)]
+    schedules = []
+    for i in range(3):
+        schedule = []
+        for j in range(3):
+            selection = choice(cantake)
+            if selection in schedule:
+                j -= 1
+            else:
+                schedule.append(selection)
+        schedules.append(schedule)
     return render_template("results.html", TEAM_NAME=TEAM_NAME, PROJECT_NAME=PROJECT_NAME, BASEURL=BASEURL, schedules=schedules)
 
 @app.route("/form")
