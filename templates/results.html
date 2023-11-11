@@ -1,0 +1,14 @@
+{% extends "base.html" %} {% block content %}
+<h1>Schedules</h1>
+<p>Here are a list of schedules that are reccomended based on your inputted data</p>
+<ul class="list-group">
+    {% for schedule in schedules %}
+    <ul class="list-group">
+        {% for course in schedule %}
+        <li class="list-group-item">{{ course }}</li>
+        {% endfor %}
+    </ul>
+    <br class="my-3">
+    {% endfor %}
+</ul>
+{% endblock %}
