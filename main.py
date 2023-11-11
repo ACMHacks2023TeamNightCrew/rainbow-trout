@@ -15,7 +15,16 @@ async def aboutUs():
 
 @app.route("/results", methods=["POST"])
 async def results():
+    import json
+    courseList = json.loads(open("static/majorLists/Computer Science B.S..json", "r").read())
     taken = []
+    # print(courseList)
+    print(request.form.to_dict(flat=False))
+    for i in range(0, len(courseList)):
+        print(request.form.get(courseList[i]))
+        if request.form.get(courseList[i]) == "on":
+            taken.append(courseList[i])
+    print(taken)
     cantake = await filter.courses("Computer Science B.S.", taken)
     # cantake = ["CSE 30", "CSE 12", "MATH 19A", "LIT 81I", "CSE 3", "CRWN 1", "HIST 4", "WRIT 1", "SPAN 1", "PSYC 1", "PHIL 22", "AM 10"]
     from random import choice
