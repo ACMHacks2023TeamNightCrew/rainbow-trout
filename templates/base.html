@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    {% include "css.html" %}
+    <title>{{ PROJECT_NAME }}</title>
+  </head>
+  <body data-bs-theme="dark">
+    {% include "nav.html" %}
+    <div class="w-75 mx-auto">{% block content %} {% endblock %}</div>
+    {% include "js.html" %}
+  </body>
+</html>

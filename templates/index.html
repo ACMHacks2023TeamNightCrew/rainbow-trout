@@ -1,10 +1,25 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>hello world</title>
-</head>
-<body>
-Hello world
-<script src="/main.js"></script>
-</body>
-</html>
+{% extends "base.html" %} {% block content %}
+<div class="card">
+  <container>
+    <div class="row">
+      <div class="col align-self-start align-self-center m-4">
+        <img src="logo.png" class="img-fluid" />
+      </div>
+      <div class="col align-self-end align-self-center m-4">
+        <h1 class="card-title">{{ PROJECT_NAME }}</h1>
+        <p class="card-text">
+          Is a service provided by {{ TEAM_NAME }} which helps students organize
+          their courses. We understand that it is difficult to find the time to
+          meet up with a counselor and while {{ PROJECT_NAME }} is no
+          substitute, we hope to allieviate the accessibility shortages and wait
+          times students face by addressing trivial worries such as course
+          scheduling and major progression charting.
+        </p>
+        <a class="btn btn-primary" href="/form"
+          >Get your schedule suggestions now!</a
+        >
+      </div>
+    </div>
+  </container>
+</div>
+{% endblock %}
