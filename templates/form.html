@@ -1,41 +1,51 @@
 {% extends "base.html" %} {% block content %}
-<form>
-    <label for="majorSelector" id="majorSelectorLabel" class="form-label">What is your major?</label>
-    <select name="majorSelector" id="majorSelector" class="form-select">
-        <!-- Just mockup -->
-        <option value="Computer Science B.S.">Computer Science B.S.</option>
-        <option value="Computer Engineering B.S.">Computer Engineering B.S.</option>
-        <option value="Computer Science Game Design B.A.">
-            Computer Science Game Design B.A.
-        </option>
-    </select>
-    <label for="completedCoursesList" id="completedCoursesListLabel" class="form-label">What courses have you already taken?</label>
-    <ul name="completedCoursesList" id="completedCoursesList">
-        <!-- Insert Course List from Major and check off completed -->
-        <!-- All of this is filler, fill in with scraped data -->
-        <li>
-            <input type="checkbox" name="CSE20CheckBox" class="form-check-input"/>
-            <label for="CSE20CheckBox" id="CSE20CheckBoxLabel" class="form-check-label">CSE20</label>
-        </li>
-        <li>
-            <input type="checkbox" name="CSE30CheckBox" class="form-check-input"/>
-            <label
-                    for="CSE30CheckBox"
-                    id="CSE30CheckBoxLabel"
-                    class="form-check-label"
-            >CSE30</label
-            >
-        </li>
-        <li>
-            <input type="checkbox" name="MATH23ACheckBox" class="form-check-input"/>
-            <label
-                    for="MATH23ACheckBox"
-                    id="MATH23ACheckBoxLabel"
-                    class="form-check-label"
-            >MATH23A</label
-            >
-        </li>
-    </ul>
-    <input type="submit" class="btn btn-primary"/>
+<form action="/results" method="post">
+  <label for="majorSelector" id="majorSelectorLabel" class="form-label"
+    >What is your major?</label
+  >
+  <select name="majorSelector" id="majorSelector" class="form-select">
+    <!-- Just mockup -->
+    {% for major in majors %}
+    <option value="{{ major }}">{{ major }}</option>
+    {% endfor %}
+  </select>
+  <label
+    for="completedCoursesList"
+    id="completedCoursesListLabel"
+    class="form-label"
+    >What courses have you already taken?</label
+  >
+  <ul name="completedCoursesList" id="completedCoursesList">
+    <!-- Insert Course List from Major and check off completed -->
+    <!-- All of this is filler, fill in with scraped data -->
+    <li>
+      <input type="checkbox" name="CSE20CheckBox" class="form-check-input" />
+      <label
+        for="CSE20CheckBox"
+        id="CSE20CheckBoxLabel"
+        class="form-check-label"
+        >CSE20</label
+      >
+    </li>
+    <li>
+      <input type="checkbox" name="CSE30CheckBox" class="form-check-input" />
+      <label
+        for="CSE30CheckBox"
+        id="CSE30CheckBoxLabel"
+        class="form-check-label"
+        >CSE30</label
+      >
+    </li>
+    <li>
+      <input type="checkbox" name="MATH23ACheckBox" class="form-check-input" />
+      <label
+        for="MATH23ACheckBox"
+        id="MATH23ACheckBoxLabel"
+        class="form-check-label"
+        >MATH23A</label
+      >
+    </li>
+  </ul>
+  <input type="submit" class="btn btn-primary" />
 </form>
 {% endblock %}
