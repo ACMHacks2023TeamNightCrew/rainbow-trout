@@ -1,0 +1,14 @@
+{% extends "base.html" %} {% block content %}
+<form action="/results" method="post">
+    <h1>Select the courses you have already taken</h1>
+    <ul class="list-group">
+        {% for course in courses%}
+        <li class="list-group-item">
+            <input type="checkbox" id="courseCheckBox" value="{{ course }}" class="form-check-input">
+            <label for="{{ course }}CheckBox">{{ course }}</label>
+        </li>
+        {% endfor %}
+    </ul>
+    <input type="submit" class="btn btn-primary my-3" />
+</form>
+{% endblock %}

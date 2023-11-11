@@ -15,23 +15,26 @@ async def aboutUs():
 
 @app.route("/results", methods=["POST"])
 async def results():
-    major = request.form.get("majorSelector")
-    print(request.form)
     taken = []
-    cantake = await filter.courses(major, taken)
-    # cantake = ["CSE 30", "CSE 12", "MATH 19A", "LIT 81I", "CSE 3", "CRWN 1", "HIST 4"]
+    cantake = await filter.courses("Computer Science B.S.", taken)
+    # cantake = ["CSE 30", "CSE 12", "MATH 19A", "LIT 81I", "CSE 3", "CRWN 1", "HIST 4", "WRIT 1", "SPAN 1", "PSYC 1", "PHIL 22", "AM 10"]
     from random import choice
     schedules = []
-    for i in range(3):
+    while len(schedules) < 3:
         schedule = []
-        for j in range(3):
+        while len(schedule) < 3:
             selection = choice(cantake)
-            if selection in schedule:
-                j -= 1
-            else:
+            if not selection in schedule:
                 schedule.append(selection)
-        schedules.append(schedule)
+        if schedule.sort not in schedules:
+            schedules.append(schedule)
     return render_template("results.html", TEAM_NAME=TEAM_NAME, PROJECT_NAME=PROJECT_NAME, BASEURL=BASEURL, schedules=schedules)
+
+@app.route("/courseList", methods=["GET", "POST"])
+async def courseList():
+    import json
+    courseList = json.loads(open("static/majorLists/Computer Science B.S..json", "r").read())
+    return render_template("courseList.html", TEAM_NAME=TEAM_NAME, PROJECT_NAME=PROJECT_NAME, BASEURL=BASEURL, majors="Computer Science B.S.", courses=courseList)
 
 @app.route("/form")
 async def form():
