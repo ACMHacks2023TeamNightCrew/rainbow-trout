@@ -5,4 +5,7 @@ def get(course: str):
         for line in f:
             s = line.split(", ")
             if course == s[0]:
-                return ", ".join(s[1:]).strip()
+                print(course, s[1:])
+                for i in range(len(s)):
+                    s[i].strip("\n")
+                return s[1:]
