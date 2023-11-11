@@ -26,5 +26,3 @@ async def courses(major: str, taken: list):
         if _possible(course, taken):
             possible.append(course)
     return possible
-
-print(courses("Computer Science B.S.", ["CSE 12", "CSE 20"]))
