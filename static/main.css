@@ -1,0 +1,8 @@
+.clickable:hover {
+    color: #aaaaaa;
+    cursor: pointer;
+}
+
+body {
+    font-family: monospace;
+}
