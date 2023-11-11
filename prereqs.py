@@ -16,12 +16,19 @@ for dept, link in links:
     soup = BeautifulSoup(deptRes.text, "html.parser").body
     # Get the list of courses in unformatted form
     courses = soup.find("div", {"id": "main"}).find("div", {"class": "courselist"})
-    print(courses)
+    # print(courses)
     for course in courses:
-        print("-" * 65)
-        print(course)
-        if course.strip().startswith(dept):
+        lineText = course.text.strip()
+        # print(lineText)
+        # print("-" * 65)
+        if lineText.startswith(dept):
             courseNames.append(description)
-            description = {"course": " ".join(course.strip()[0:2])}
-    print(courseNames)
-    break
+            description = {"course": " ".join(lineText.split()[0:2])}
+        if lineText.startswith("Requirements"):
+            description["reqs"] = lineText
+
+for i in range(len(courseNames)):
+    if "reqs" not in courseNames[i]:
+        continue
+    courseNames[i]["reqs"]
+print(courseNames)
