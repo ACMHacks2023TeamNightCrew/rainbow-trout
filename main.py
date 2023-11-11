@@ -1,4 +1,6 @@
 from flask import *
+import catalog_api
+
 TEAM_NAME = "Team Night Crew"
 PROJECT_NAME = "Slug Counselor"
 BASEURL = "/"
@@ -16,6 +18,10 @@ def form():
 @app.route("/")
 def root():
     return render_template("index.html", TEAM_NAME=TEAM_NAME, PROJECT_NAME=PROJECT_NAME, BASEURL=BASEURL)
+
+@app.route("/api/course/<course>")
+def get_course_info(course):
+    return catalog_api.get_course_info(course)
 
 if __name__ == "__main__":
     app.run(port=5000, debug=True)
