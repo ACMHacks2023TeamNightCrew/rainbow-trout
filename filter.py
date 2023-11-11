@@ -23,6 +23,7 @@ async def courses(major: str, taken: list):
     file.close()
     possible = []
     for course in courseList:
-        if _possible(course, taken):
+        canTake = await _possible(course, taken)
+        if canTake:
             possible.append(course)
     return possible
