@@ -11,9 +11,13 @@ app = Flask(__name__, static_url_path="", static_folder="static", template_folde
 def aboutUs():
     return render_template("about-us.html", TEAM_NAME=TEAM_NAME, PROJECT_NAME=PROJECT_NAME, BASEURL=BASEURL)
 
+# @app.route("/results", methods=["POST"])
+# def results():
+#     return render_template("form.html", TEAM_NAME=TEAM_NAME, PROJECT_NAME=PROJECT_NAME, BASEURL=BASEURL)
+
 @app.route("/form")
 def form():
-    return render_template("form.html", TEAM_NAME=TEAM_NAME, PROJECT_NAME=PROJECT_NAME, BASEURL=BASEURL)
+    return render_template("form.html", TEAM_NAME=TEAM_NAME, PROJECT_NAME=PROJECT_NAME, BASEURL=BASEURL, majors=catalog_api.MAJORS.keys())
 
 @app.route("/")
 def root():
